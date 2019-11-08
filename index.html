@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <link rel="stylesheet" href="stylesheet.css">
+    </head>
+    <body id='horror'>
+        <h1 id="title"></h1>
+        <p id="counter"></p>
+        <img id="zombie">
+        <button id="btn"></button>
+
+
+        <script>
+
+            document.getElementById('title').innerHTML = 'Zombie Hunter 666';
+            document.getElementById('title').style.textAlign = 'center';
+
+            let sound = new Audio('./Sound/zombiesound.mp3');
+            let counter = 0;
+            
+            let center_height = window.innerHeight/2;
+            let center_width = window.innerWidth/2;
+            document.getElementById('zombie').src = "./Images/police.gif";
+            document.getElementById('zombie').style.width = '130px';
+            document.getElementById('zombie').style.length = '130px';
+            document.getElementById('zombie').style.top = center_height - 115 +'px';
+            document.getElementById('zombie').style.left = center_width - 105 +'px';
+            document.getElementById('zombie').style.position = 'absolute';
+            document.getElementById('counter').innerHTML = 'Counter = '+ counter;
+
+            function zombiemove(){
+                let width = window.innerWidth;
+                let height = window.innerHeight;
+                let ramnum = Math.random();
+                let ramnum2 = Math.random();
+                document.getElementById('zombie').style.left = (ramnum * (width-130)) + 'px';
+                document.getElementById('zombie').style.top = (ramnum2 * (height-130)) + 'px';
+                document.getElementById('zombie').style.position = 'absolute';
+            }
+
+            function zombiedeath(){
+                counter += 1;
+                document.getElementById('counter').innerHTML = 'Counter = '+ counter;
+                document.getElementById('zombie').src = './Images/explosion.gif';
+                sound.play();
+                setTimeout(function (){document.getElementById('zombie').src = "./Images/police.gif"}, 800)
+            }
+
+            document.getElementById('btn').innerHTML = 'Restart';
+
+            function buttonreset(){
+                counter = 0;
+                location.reload();
+            }
+            
+            setInterval(zombiemove, 2000)
+            btn.onclick = buttonreset;
+            document.getElementById('zombie').onclick = zombiedeath;
+            
+            
+        </script>
+    </body>
+</html>
