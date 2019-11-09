@@ -1,0 +1,15 @@
+#btn {
+    position: absolute;
+    top: 95%;
+    left: 48%;
+}
+
+#counter {
+    text-align: center;
+    font-size: 120%;
+    color: white;
+}
+
+#title {
+    color: white;
+}
